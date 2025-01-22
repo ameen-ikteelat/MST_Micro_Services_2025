@@ -1,0 +1,67 @@
+// Student class
+public class Student {
+    private int studentId;
+    private String name;
+    private double grade;
+
+    // Constructor
+    public Student(int studentId, String name) {
+        this.studentId = studentId;
+        this.name = name;
+        this.grade = 0.0; // Default grade
+    }
+
+    // Getter and Setter for studentId
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    // Getter and Setter for name
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter and Setter for grade
+    public double getGrade() {
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        if (grade >= 0 && grade <= 100) {
+            this.grade = grade;
+        } else {
+            System.out.println("Invalid grade. Must be between 0 and 100.");
+        }
+    }
+
+    // Method to check if the student is passing
+    public boolean isPassing() {
+        return this.grade >= 60;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Create a Student object
+        Student student = new Student(101, "Alice Johnson");
+
+        // Set details
+        student.setGrade(85); // Set a valid grade
+        student.setGrade(110); // Attempt to set an invalid grade
+
+        // Print details
+        System.out.println("Student Name: " + student.getName());
+        System.out.println("Student ID: " + student.getStudentId());
+        System.out.println("Grade: " + student.getGrade());
+        System.out.println("Is Passing: " + student.isPassing());
+    }
+}
