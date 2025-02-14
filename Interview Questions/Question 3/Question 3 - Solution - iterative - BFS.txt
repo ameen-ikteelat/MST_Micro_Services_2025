@@ -1,0 +1,40 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class SameTree {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        // If both trees are empty
+        if (p == null && q == null) return true;
+        // If one tree is empty, and the other isn't
+        if (p == null || q == null) return false;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(p);
+        queue.add(q);
+
+        while (!queue.isEmpty()) {
+            TreeNode node1 = queue.poll();
+            TreeNode node2 = queue.poll();
+
+            // Check values
+            if (node1.val != node2.val) return false;
+
+            // Check left children
+            if (node1.left != null && node2.left != null) {
+                queue.add(node1.left);
+                queue.add(node2.left);
+            } else if (node1.left != node2.left) {
+                return false;
+            }
+
+            // Check right children
+            if (node1.right != null && node2.right != null) {
+                queue.add(node1.right);
+                queue.add(node2.right);
+            } else if (node1.right != node2.right) {
+                return false;
+            }
+        }
+        return true;
+    }
+}

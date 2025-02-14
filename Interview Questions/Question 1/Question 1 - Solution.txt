@@ -1,0 +1,39 @@
+public class SwapWithoutTemp {
+    public static void main(String[] args) {
+        int x = 5, y = 10;
+
+        // Swap without temp variable
+        x = x + y; // x = 15
+        y = x - y; // y = 15 - 10 = 5
+        x = x - y; // x = 15 - 5 = 10
+
+        System.out.println("After swap: x = " + x + ", y = " + y);
+    }
+}
+
+public class SwapWithoutTemp {
+    public static void main(String[] args) {
+        int x = 5, y = 10;
+
+        // XOR-based swap
+        x = x ^ y;
+        y = x ^ y;
+        x = x ^ y;
+
+        System.out.println("After swap: x = " + x + ", y = " + y);
+    }
+}
+
+public class SwapWithoutTemp {
+    public static void main(String[] args) {
+        int x = 5, y = 10;
+
+        // Multiplication-Division method
+        x = x * y; // x = 50
+        y = x / y; // y = 50 / 10 = 5
+        x = x / y; // x = 50 / 5 = 10
+
+        System.out.println("After swap: x = " + x + ", y = " + y);
+    }
+}
+
