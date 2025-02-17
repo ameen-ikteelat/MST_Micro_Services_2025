@@ -1,0 +1,33 @@
+public class ReverseNumber {
+    public static int reverse(int num) {
+        int reversed = 0;
+        while (num != 0) {
+            int digit = num % 10;         // Extract the last digit
+            reversed = reversed * 10 + digit; // Append digit to reversed number
+            num /= 10;                   // Remove the last digit
+        }
+        return reversed;
+    }
+
+    public static void main(String[] args) {
+        // Example 1: Positive number
+        int num1 = 12345;
+        System.out.println(num1 + " reversed is: " + reverse(num1)); // Output: 54321
+
+        // Example 2: Negative number
+        int num2 = -6789;
+        System.out.println(num2 + " reversed is: " + reverse(num2)); // Output: -9876
+
+        // Example 3: Number ending with zero
+        int num3 = 1200;
+        System.out.println(num3 + " reversed is: " + reverse(num3)); // Output: 21
+
+        // Example 4: Single digit number
+        int num4 = 7;
+        System.out.println(num4 + " reversed is: " + reverse(num4)); // Output: 7
+
+        // Example 5: Palindromic number
+        int num5 = 1221;
+        System.out.println(num5 + " reversed is: " + reverse(num5)); // Output: 1221
+    }
+}

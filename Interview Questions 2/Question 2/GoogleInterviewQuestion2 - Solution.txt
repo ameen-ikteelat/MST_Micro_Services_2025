@@ -1,0 +1,42 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class FirstUniqueCharacter {
+    public static int firstUniqueChar(String s) {
+        if (s == null || s.isEmpty()) {
+            return -1;
+        }
+
+        // Step 1: Count the frequency of each character using a HashMap
+        Map<Character, Integer> charCount = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+
+        // Step 2: Find the first character with a frequency of 1
+        for (int i = 0; i < s.length(); i++) {
+            if (charCount.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+
+        // Step 3: Return -1 if no unique character is found
+        return -1;
+    }
+
+    public static void main(String[] args) {
+        // Combination 1: "MSTCourse"
+        // M=1, S=2, T=2, C=1, o=1, u=1, r=1, s=2, e=1
+        // First unique character: 'M' at index 0
+        System.out.println("MSTCourse: " + firstUniqueChar("MSTCourse"));  // Output: 0 (M)
+
+        // Combination 2: "MicroservicesMST"
+        // M=2, i=3, c=2, r=3, o=1, s=4, e=2, v=1, S=1, T=1
+        // First unique character: 'o' at index 4
+        System.out.println("MicroservicesMST: " + firstUniqueChar("MicroservicesMST"));  // Output: 4 (o)
+
+        // Additional Example: "aabb"
+        // a=2, b=2 (No unique characters)
+        System.out.println("aabb: " + firstUniqueChar("aabb"));  // Output: -1 (No unique character)
+    }
+}

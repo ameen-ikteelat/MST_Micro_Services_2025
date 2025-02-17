@@ -1,0 +1,39 @@
+public class SymmetricTree {
+    // Main method to check if the tree is symmetric
+    public static boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return isMirror(root.left, root.right);
+    }
+
+    // Helper method to check if two subtrees are mirrors of each other
+    private static boolean isMirror(TreeNode t1, TreeNode t2) {
+        if (t1 == null && t2 == null) {
+            return true;
+        }
+        if (t1 == null || t2 == null) {
+            return false;
+        }
+        return (t1.val == t2.val)
+                && isMirror(t1.right, t2.left)
+                && isMirror(t1.left, t2.right);
+    }
+
+    // Example usage and test cases
+    public static void main(String[] args) {
+        // Symmetric Tree Example
+        TreeNode symmetricRoot = new TreeNode(1,
+                new TreeNode(2, new TreeNode(3), new TreeNode(4)),
+                new TreeNode(2, new TreeNode(4), new TreeNode(3))
+        );
+        System.out.println("Symmetric tree isSymmetric: " + isSymmetric(symmetricRoot)); // Output: true
+
+        // Asymmetric Tree Example
+        TreeNode asymmetricRoot = new TreeNode(1,
+                new TreeNode(2, null, new TreeNode(3)),
+                new TreeNode(2, null, new TreeNode(5))
+        );
+        System.out.println("Asymmetric tree isSymmetric: " + isSymmetric(asymmetricRoot)); // Output: false
+    }
+}
