@@ -1,0 +1,41 @@
+import java.util.Arrays;
+
+public class BallSorter {
+
+    public static void sortColors(String[] balls) {
+        // First pass: Count the colors
+        int redCount = 0, greenCount = 0, yellowCount = 0;
+        for (String ball : balls) {
+            switch (ball) {
+                case "Red":
+                    redCount++;
+                    break;
+                case "Green":
+                    greenCount++;
+                    break;
+                case "Yellow":
+                    yellowCount++;
+                    break;
+            }
+        }
+
+        // Second pass: Overwrite the array
+        int index = 0;
+        for (int i = 0; i < redCount; i++) {
+            balls[index++] = "Red";
+        }
+        for (int i = 0; i < greenCount; i++) {
+            balls[index++] = "Green";
+        }
+        for (int i = 0; i < yellowCount; i++) {
+            balls[index++] = "Yellow";
+        }
+    }
+
+    public static void main(String[] args) {
+        String[] balls = {"Green", "Yellow", "Red", "Green", "Red", "Yellow", "Red"};
+        System.out.println("Before sorting: " + Arrays.toString(balls));
+        sortColors(balls);
+        System.out.println("After sorting:  " + Arrays.toString(balls));
+    }
+}

@@ -1,0 +1,44 @@
+import java.util.Arrays;
+
+public class SortColoredBalls {
+
+    public static void sortBalls(String[] balls) {
+        int redIndex = 0, greenIndex = 0, yellowIndex = balls.length - 1;
+
+        while (greenIndex <= yellowIndex) {
+            switch (balls[greenIndex]) {
+                case "Red":
+                    swap(balls, redIndex, greenIndex);
+                    redIndex++;
+                    greenIndex++;
+                    break;
+                case "Green":
+                    greenIndex++;
+                    break;
+                case "Yellow":
+                    swap(balls, greenIndex, yellowIndex);
+                    yellowIndex--;
+                    break;
+            }
+        }
+    }
+
+    private static void swap(String[] arr, int i, int j) {
+        String temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        String[] balls = {"Green", "Yellow", "Red", "Green", "Red", "Yellow"};
+        System.out.println("Before sorting: " + Arrays.toString(balls));
+        sortBalls(balls);
+        System.out.println("After sorting: " + Arrays.toString(balls));
+        
+        // Additional test
+        String[] balls2 = {"Red", "Red", "Yellow", "Green", "Yellow"};
+        System.out.println("Before sorting: " + Arrays.toString(balls2));
+        sortBalls(balls2);
+        System.out.println("After sorting: " + Arrays.toString(balls2));
+    }
+}

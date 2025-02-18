@@ -1,0 +1,43 @@
+import java.util.Arrays;
+
+public class BallSorter {
+
+    public static void sortColors(String[] balls) {
+        int low = 0, mid = 0, high = balls.length - 1;
+
+        while (mid <= high) {
+            switch (balls[mid]) {
+                case "Red":
+                    swap(balls, low, mid);
+                    low++;
+                    mid++;
+                    break;
+
+                case "Green":
+                    mid++;
+                    break;
+
+                case "Yellow":
+                    swap(balls, mid, high);
+                    high--;
+                    break;
+
+                default:
+                    throw new IllegalArgumentException("Invalid color: " + balls[mid]);
+            }
+        }
+    }
+
+    private static void swap(String[] arr, int i, int j) {
+        String temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        String[] balls = {"Green", "Yellow", "Red", "Green", "Red", "Yellow", "Green"};
+        System.out.println("Before sorting: " + Arrays.toString(balls));
+        sortColors(balls);
+        System.out.println("After sorting: " + Arrays.toString(balls));
+    }
+}

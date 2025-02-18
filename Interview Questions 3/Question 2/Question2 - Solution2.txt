@@ -1,0 +1,30 @@
+public class ReverseWords {
+
+    public static String reverseWords(String s) {
+        // Trim the string and split by one or more spaces
+        String[] words = s.trim().split("\\s+");
+        
+        StringBuilder result = new StringBuilder();
+        
+        // Append words in reverse order
+        for (int i = words.length - 1; i >= 0; i--) {
+            result.append(words[i]);
+            if (i > 0) {
+                result.append(" ");
+            }
+        }
+        
+        return result.toString();
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        String s1 = "the sky is blue";
+        String s2 = "  hello world  ";
+        String s3 = "a good   example";
+        
+        System.out.println(reverseWords(s1)); // Output: "blue is sky the"
+        System.out.println(reverseWords(s2)); // Output: "world hello"
+        System.out.println(reverseWords(s3)); // Output: "example good a"
+    }
+}

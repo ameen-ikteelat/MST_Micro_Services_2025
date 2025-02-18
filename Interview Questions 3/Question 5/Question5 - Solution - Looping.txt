@@ -1,0 +1,17 @@
+public class SquareRoot {
+    public static int mySqrt(int x) {
+        if (x < 2) return x;
+
+        int i = 1;
+        while (i * i <= x) {
+            i++;
+        }
+        return i - 1; // Return the floor value
+    }
+
+    public static void main(String[] args) {
+        System.out.println(mySqrt(4));   // Output: 2
+        System.out.println(mySqrt(8));   // Output: 2
+        System.out.println(mySqrt(16));  // Output: 4
+    }
+}

@@ -1,0 +1,29 @@
+import java.util.*;
+
+public class ReverseWords {
+
+    public static String reverseWords(String s) {
+        // Trim the string to remove leading and trailing spaces
+        s = s.trim();
+        
+        // Split the string by one or more spaces using regex
+        String[] words = s.split("\\s+");
+        
+        // Reverse the array of words
+        Collections.reverse(Arrays.asList(words));
+        
+        // Join the words with a single space
+        return String.join(" ", words);
+    }
+
+    public static void main(String[] args) {
+        // Test cases
+        String s1 = "the sky is blue";
+        String s2 = "  hello world  ";
+        String s3 = "a good   example";
+        
+        System.out.println(reverseWords(s1)); // Output: "blue is sky the"
+        System.out.println(reverseWords(s2)); // Output: "world hello"
+        System.out.println(reverseWords(s3)); // Output: "example good a"
+    }
+}
