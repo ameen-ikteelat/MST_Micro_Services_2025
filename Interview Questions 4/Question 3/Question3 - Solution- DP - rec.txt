@@ -1,0 +1,24 @@
+class Solution {
+    public int climbStairs(int n) {
+        // Create an array to memoize the results
+        int[] memo = new int[n + 1];
+        return climb(n, memo);
+    }
+    
+    // Helper function that returns the number of ways to climb n stairs.
+    private int climb(int n, int[] memo) {
+        // Base cases: for 0 or 1 stair, there is exactly 1 way.
+        if (n <= 1) {
+            return 1;
+        }
+        
+        // If we already computed the value, return it.
+        if (memo[n] != 0) {
+            return memo[n];
+        }
+        
+        // Recursively compute the number of ways for n-1 and n-2 stairs.
+        memo[n] = climb(n - 1, memo) + climb(n - 2, memo);
+        return memo[n];
+    }
+}

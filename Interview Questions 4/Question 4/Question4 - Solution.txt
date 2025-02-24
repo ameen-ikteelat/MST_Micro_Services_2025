@@ -1,0 +1,28 @@
+import java.util.PriorityQueue;
+
+class Solution {
+    public int lastStoneWeight(int[] stones) {
+        // Create a max-heap using a custom comparator
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>((a, b) -> b - a);
+        
+        // Add all stones to the max-heap
+        for (int stone : stones) {
+            maxHeap.offer(stone);
+        }
+        
+        // Continue the process until there is at most one stone left
+        while (maxHeap.size() > 1) {
+            // Retrieve and remove the two heaviest stones
+            int stone1 = maxHeap.poll();
+            int stone2 = maxHeap.poll();
+            
+            // If the two stones are not equal, push the difference back into the heap
+            if (stone1 != stone2) {
+                maxHeap.offer(stone1 - stone2);
+            }
+        }
+        
+        // If no stones are left, return 0, otherwise return the weight of the last stone
+        return maxHeap.isEmpty() ? 0 : maxHeap.poll();
+    }
+}

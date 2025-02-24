@@ -1,0 +1,19 @@
+class Solution {
+    public int climbStairs(int n) {
+        if (n <= 1) {
+            return 1;
+        }
+        
+        // a and b represent the number of ways to reach the two previous steps.
+        int a = 1, b = 1;
+        
+        // Loop starts from step 2 to step n.
+        for (int i = 2; i <= n; i++) {
+            int temp = a + b;
+            a = b;
+            b = temp;
+        }
+        
+        return b;
+    }
+}
