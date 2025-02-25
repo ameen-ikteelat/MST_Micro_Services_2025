@@ -1,0 +1,46 @@
+// Time Complexity: O(n), Space Complexity: O(1)
+
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;  // To store the minimum price encountered so far.
+        int maxProfit = 0;                 // To store the maximum profit found so far.
+        
+        // Traverse through each price in the array.
+        for (int price : prices) {
+            // Update the minimum price if the current price is lower.
+            if (price < minPrice) {
+                minPrice = price;
+            } else if (price - minPrice > maxProfit) {
+                // Calculate the profit if sold at the current price,
+                // and update maxProfit if this profit is higher.
+                maxProfit = price - minPrice;
+            }
+        }
+        return maxProfit;
+    }
+
+
+
+    
+    // You can use a main method to test the solution.
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        int[] prices = {7, 1, 5, 3, 6, 4};
+        System.out.println("Max Profit: " + solution.maxProfit(prices));  // Expected output: 5
+    }
+}
+
+
+// Variation:
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int maxP = 0;
+        int minBuy = prices[0];
+
+        for (int sell : prices) {
+            maxP = Math.max(maxP, sell - minBuy);
+            minBuy = Math.min(minBuy, sell);
+        }
+        return maxP;
+    }
+}

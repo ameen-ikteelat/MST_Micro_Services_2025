@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    // This variable will store the maximum diameter found.
+    private int diameter = 0;
+    
+    public int diameterOfBinaryTree(TreeNode root) {
+        // Start the DFS traversal to compute heights and update diameter.
+        height(root);
+        return diameter;
+    }
+    
+    // Helper method to compute the height of a subtree.
+    private int height(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        
+        // Recursively compute the height of the left and right subtrees.
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+        
+        // The diameter at the current node is the sum of left and right subtree heights.
+        diameter = Math.max(diameter, leftHeight + rightHeight);
+        
+        // Return the height of the current subtree.
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+}
